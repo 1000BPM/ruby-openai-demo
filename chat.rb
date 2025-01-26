@@ -33,4 +33,5 @@ while user_input != "bye"
     }
   )
   pp api_response
+  user_input = gets.chomp
 end
