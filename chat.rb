@@ -7,6 +7,7 @@ require "dotenv/load"
 client = OpenAI::Client.new(access_token: ENV.fetch("OPENAI_API_KEY"))
 
 pp "How can I help you today?  To end the conversation, type solely 'bye'."
+puts "-" * 50
 
 #get response from user to send to GPT - while user does not input "bye"
 
@@ -32,6 +33,7 @@ while user_input != "bye"
       messages: message_list
     }
   )
-  pp api_response
+  pp api_response.fetch("choices").at(0).fetch("message").fetch("content")
+  puts "-" * 50
   user_input = gets.chomp
 end
